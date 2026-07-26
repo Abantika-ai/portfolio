@@ -49,21 +49,21 @@ export const research = [
 export const timeline = [
   {
     year: 'Year 1',
-    title: 'Coursework & Qualifying Prep',
+    title: 'Coursework & First Steps in LZ',
     description:
-      'Core graduate coursework in particle physics and statistics; joined the LZ collaboration and began shadowing calibration shifts.',
+      'Core graduate coursework in physics and particle physics, alongside my first hands-on contributions to the LZ collaboration — early data-quality work such as the PMT-trip exclusion cut, and remote detector shifts to learn how the experiment actually runs.',
   },
   {
     year: 'Year 2',
-    title: 'Quals, Hardware & First Analysis',
+    title: 'Qualifying Exam & First PSD Work',
     description:
-      'Passed the qualifying exam; contributed to PMT calibration and slow-controls monitoring; ran my first background-model studies.',
+      'Passed the qualifying exam and began my first analysis work, starting the pulse-shape discrimination (PSD) studies that would grow into my thesis project.',
   },
   {
     year: 'Year 3 — Current',
     title: 'Thesis Analysis Underway',
     description:
-      'Leading the low-energy calibration analysis and building out the profile-likelihood framework for the next WIMP-search result.',
+      'Developing a pulse-shape discrimination approach to separate fiducial from wall-background events — work aimed at directly improving the sensitivity of the next WIMP-search analysis.',
     current: true,
   },
   {
@@ -85,8 +85,8 @@ export const skills = [
     items: ['Python', 'C++', 'ROOT', 'NumPy / SciPy', 'Pandas'],
   },
   {
-    category: 'Statistics & ML',
-    items: ['Profile likelihood', 'RooFit / RooStats', 'scikit-learn', 'PyTorch', 'Bayesian inference'],
+    category: 'Statistics & Data Analysis',
+    items: ['CMA-ES optimization', 'KDE-based likelihoods', 'Correlation analysis (Pearson/Spearman)', 'Machine learning (learning phase)'],
   },
   {
     category: 'Detector & Simulation',

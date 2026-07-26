@@ -7,7 +7,6 @@ export default function Footer() {
         <span>
           © {new Date().getFullYear()} {profile.name}
         </span>
-        <span className="footer-note">Built with React &amp; Canvas</span>
       </div>
     </footer>
   );
