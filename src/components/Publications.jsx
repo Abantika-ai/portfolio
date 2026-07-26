@@ -11,7 +11,7 @@ export default function Publications() {
         <div ref={headRef} className="reveal">
           <p className="eyebrow">Record</p>
           <h2 className="section-title">
-            Publications & <span className="accent">talks</span>
+            <span className="accent">Publications</span>
           </h2>
         </div>
 

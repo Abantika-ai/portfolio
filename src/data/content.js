@@ -11,11 +11,9 @@ export const profile = {
   tagline:
     'Searching for WIMP dark matter with a 7-tonne liquid-xenon time projection chamber, one mile underground at SURF.',
   location: 'Sanford Underground Research Facility · Lead, SD',
-  email: 'jordan.reyes@example.edu',
+  email: 'aghosh2@albany.edu',
   links: {
-    github: 'https://github.com/your-handle',
-    linkedin: 'https://linkedin.com/in/your-handle',
-    scholar: 'https://scholar.google.com/citations?user=your-id',
+    linkedin: 'https://www.linkedin.com/in/abantika-starstuff/',
     orcid: 'https://orcid.org/0000-0000-0000-0000',
   },
 };
@@ -27,37 +25,24 @@ export const about = {
     'I completed my coursework and qualifying exams, and spent time learning how LZ works. Year three has been about turning that groundwork into an analysis I can defend.',
   ],
   focus: [
-    'Low-background signal reconstruction',
-    'Detector calibration & xenon purity',
-    'Statistical inference for rare-event searches',
-    'Background modeling & discrimination',
+    'Fiducial/wall event discrimination from S1 light patterns',
+    'Combining observables via CMA-ES & KDE-likelihood scoring',
+    'Next: folding in S2 observables + a machine-learning classifier',
   ],
 };
 
 export const research = [
   {
-    title: 'Low-Energy Nuclear Recoil Calibration',
+    title: 'Wall-Event Discrimination from S1 Light Patterns',
     description:
-      'Characterizing the detector’s S1/S2 response at low energies using DD neutron and tritium calibration sources, to pin down the signal model used in the WIMP search.',
-    tags: ['Calibration', 'Xenon TPC', 'ROOT'],
+      'Wall events — background scatters near the PTFE wall — get mis-reconstructed into the fiducial volume, slipping past standard position cuts. I built a discriminator from S1 light-pattern observables (light-weighted radius, outer-ring fraction, PMT hit multiplicity, and more), then combined the strongest ones with CMA-ES-optimized scoring and a KDE-based likelihood classifier. Goal: expand the usable fiducial volume without letting in more wall background.',
+    tags: ['S1 Light Patterns', 'CMA-ES', 'KDE Likelihood', 'Python'],
   },
   {
-    title: 'Background Discrimination with Machine Learning',
+    title: 'Detector Noise-Burst Exclusion Cuts',
     description:
-      'Developing gradient-boosted and neural discriminators to separate electronic-recoil backgrounds (radiogenic, solar neutrino) from the nuclear-recoil signal region.',
-    tags: ['scikit-learn', 'PyTorch', 'Background Modeling'],
-  },
-  {
-    title: 'Profile-Likelihood WIMP Search',
-    description:
-      'Building the profile-likelihood-ratio framework used to set exclusion limits on the WIMP-nucleon cross-section, propagating systematic uncertainties from calibration data.',
-    tags: ['Statistics', 'RooFit', 'Python'],
-  },
-  {
-    title: 'Xenon Purity & Slow Controls Monitoring',
-    description:
-      'Monitoring electron lifetime and detector conditions in near-real time, flagging drifts that would bias energy reconstruction before they reach the physics dataset.',
-    tags: ['DAQ', 'Slow Controls', 'Data Quality'],
+      'Co-developed a data-quality veto (with Ewan) that flags anomalous single-photoelectron and S1 rate spikes in the WIMP-search dataset — noise bursts that would otherwise contaminate the analysis. Jointly optimized the rate threshold and time-binning to reject noise while keeping over 99% of good livetime. Merged into the collaboration’s core analysis software (ALPACA).',
+    tags: ['Data Quality', 'ALPACA', 'Python'],
   },
 ];
 
@@ -116,23 +101,10 @@ export const skills = [
 export const publications = [
   {
     type: 'Paper',
-    title: 'First Dark Matter Search Results from the LZ Experiment',
+    title:
+      'Searches for Light Dark Matter and Evidence of Coherent Elastic Neutrino-Nucleus Scattering of Solar Neutrinos with the LUX-ZEPLIN (LZ) Experiment',
     venue: 'Physical Review Letters (LZ Collaboration)',
-    year: '2023',
-    link: '#',
-  },
-  {
-    type: 'Talk',
-    title: 'Low-Energy Calibration Strategy for LZ',
-    venue: 'APS April Meeting',
-    year: '2024',
-    link: '#',
-  },
-  {
-    type: 'Poster',
-    title: 'Background Discrimination via Gradient-Boosted Classifiers in Xenon TPCs',
-    venue: 'TAUP Conference',
-    year: '2024',
-    link: '#',
+    year: '2026',
+    link: 'https://doi.org/10.1103/jvqf-njpj',
   },
 ];

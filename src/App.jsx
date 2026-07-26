@@ -1,4 +1,5 @@
 import { ThemeProvider } from './theme/ThemeContext.jsx';
+import BackgroundCanvas from './components/BackgroundCanvas.jsx';
 import Nav from './components/Nav.jsx';
 import Hero from './components/Hero.jsx';
 import About from './components/About.jsx';
@@ -12,6 +13,7 @@ import Footer from './components/Footer.jsx';
 function App() {
   return (
     <ThemeProvider>
+      <BackgroundCanvas />
       <Nav />
       <main>
         <Hero />

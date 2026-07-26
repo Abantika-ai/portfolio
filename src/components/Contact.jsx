@@ -19,14 +19,8 @@ export default function Contact() {
             <a className="btn btn-primary" href={`mailto:${profile.email}`}>
               {profile.email}
             </a>
-            <a className="btn btn-ghost" href={profile.links.github}>
-              GitHub
-            </a>
             <a className="btn btn-ghost" href={profile.links.linkedin}>
               LinkedIn
-            </a>
-            <a className="btn btn-ghost" href={profile.links.scholar}>
-              Google Scholar
             </a>
           </div>
         </div>

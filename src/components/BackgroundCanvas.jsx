@@ -2,14 +2,17 @@ import { useEffect, useRef } from 'react';
 import { useTheme } from '../theme/ThemeContext.jsx';
 
 /* ============================================================
-   HERO CANVAS — "Drift Chamber" field simulation
+   BACKGROUND CANVAS — "Drift Chamber" field simulation
    ------------------------------------------------------------
-   Visual metaphor: ionization electrons drifting upward through
-   liquid xenon under an applied electric field — the mechanism
-   behind the S2 light signal LZ uses to reconstruct where a
-   particle interacted. Moving the cursor perturbs the local
-   field (a "recoil"); clicking fires an interaction flash,
-   like the S1/S2 double flash of a real scatter event.
+   Site-wide ambient background (fixed to the viewport, behind
+   all content, pointer-events disabled so it never blocks real
+   clicks). Visual metaphor: ionization electrons drifting upward
+   through liquid xenon under an applied electric field — the
+   mechanism behind the S2 light signal LZ uses to reconstruct
+   where a particle interacted. Moving the cursor anywhere on the
+   page perturbs the local field (a "recoil"); clicking anywhere
+   fires an interaction flash, like the S1/S2 double flash of a
+   real scatter event.
 
    Night = the real operating condition (underground, dark).
    Day = same physics, re-lit for a bright surface: no visible
@@ -45,13 +48,12 @@ const THEMES = {
   },
 };
 
-export default function HeroCanvas() {
+export default function BackgroundCanvas() {
   const canvasRef = useRef(null);
   const { theme } = useTheme();
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    const host = canvas.parentElement;
     const ctx = canvas.getContext('2d');
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const COLORS = THEMES[theme] ?? THEMES.dark;
@@ -86,10 +88,9 @@ export default function HeroCanvas() {
     }));
 
     function layout() {
-      const rect = host.getBoundingClientRect();
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      width = rect.width;
-      height = rect.height;
+      width = window.innerWidth;
+      height = window.innerHeight;
       canvas.width = width * dpr;
       canvas.height = height * dpr;
       canvas.style.width = `${width}px`;
@@ -188,10 +189,12 @@ export default function HeroCanvas() {
       }, 120);
     }
 
+    // Listeners live on window (not the canvas) because the canvas has
+    // pointer-events:none — it must never intercept clicks meant for
+    // real page content sitting above it.
     function onMouseMove(e) {
-      const rect = canvas.getBoundingClientRect();
-      mouse.x = e.clientX - rect.left;
-      mouse.y = e.clientY - rect.top;
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
       mouse.active = true;
     }
 
@@ -202,15 +205,14 @@ export default function HeroCanvas() {
     }
 
     function onClick(e) {
-      const rect = canvas.getBoundingClientRect();
-      flashes.push({ x: e.clientX - rect.left, y: e.clientY - rect.top, start: performance.now() });
+      flashes.push({ x: e.clientX, y: e.clientY, start: performance.now() });
       if (prefersReduced) renderFrame(performance.now());
     }
 
     layout();
-    host.addEventListener('mousemove', onMouseMove);
-    host.addEventListener('mouseleave', onMouseLeave);
-    host.addEventListener('click', onClick);
+    window.addEventListener('mousemove', onMouseMove, { passive: true });
+    window.addEventListener('mouseout', onMouseLeave);
+    window.addEventListener('click', onClick);
     window.addEventListener('resize', onResize);
 
     if (prefersReduced) {
@@ -223,11 +225,11 @@ export default function HeroCanvas() {
       if (rafId) cancelAnimationFrame(rafId);
       clearTimeout(resizeTimer);
       window.removeEventListener('resize', onResize);
-      host.removeEventListener('mousemove', onMouseMove);
-      host.removeEventListener('mouseleave', onMouseLeave);
-      host.removeEventListener('click', onClick);
+      window.removeEventListener('mousemove', onMouseMove);
+      window.removeEventListener('mouseout', onMouseLeave);
+      window.removeEventListener('click', onClick);
     };
   }, [theme]);
 
-  return <canvas ref={canvasRef} className="hero-canvas" aria-hidden="true" />;
+  return <canvas ref={canvasRef} className="site-canvas" aria-hidden="true" />;
 }

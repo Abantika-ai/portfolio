@@ -1,10 +1,8 @@
-import HeroCanvas from './HeroCanvas.jsx';
 import { profile } from '../data/content.js';
 
 export default function Hero() {
   return (
     <section className="hero" id="top">
-      <HeroCanvas />
       <div className="container hero-content">
         <p className="eyebrow">{profile.experiment} · Direct Detection of Dark Matter</p>
         <h1 className="hero-title">

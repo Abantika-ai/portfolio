@@ -440,15 +440,15 @@ section {
   min-height: 100svh;
   display: flex;
   align-items: center;
-  overflow: hidden;
   padding-top: 72px;
 }
 
-.hero-canvas {
-  position: absolute;
+.site-canvas {
+  position: fixed;
   inset: 0;
   display: block;
-  z-index: 0;
+  z-index: -1;
+  pointer-events: none;
 }
 
 .hero-content {
