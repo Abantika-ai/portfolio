@@ -17,7 +17,6 @@ export default function Hero() {
             See my research
           </a>
         </div>
-        <p className="hero-hint">Move your cursor through the field — click to trigger an interaction event.</p>
       </div>
       <div className="hero-scroll-cue" aria-hidden="true">
         <span />

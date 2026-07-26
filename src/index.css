@@ -484,12 +484,6 @@ section {
   margin-bottom: var(--space-3);
 }
 
-.hero-hint {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  color: var(--text-faint);
-}
-
 .hero-scroll-cue {
   position: absolute;
   left: 50%;
